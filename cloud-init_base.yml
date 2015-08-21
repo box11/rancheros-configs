@@ -1,0 +1,23 @@
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA3rYKPKpXzC1HizHVhr5pbRMVaeJRdIhoapdWmqNW
+
+rancher:
+  network:
+    dns:
+      domain: box11.local
+      nameservers:
+        - 192.168.0.21
+        - 192.168.0.12
+        - 192.168.0.1
+
+    user_docker:
+      - docker
+      - --insecure-registry
+      - 10.0.0.0/8
+      - -d
+      - -s
+      - overlay
+      - -G
+      - docker
+      - -H
+      - unix:///var/run/docker.sock
